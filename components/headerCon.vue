@@ -1,7 +1,7 @@
 <template>
   <div class="bg-slate-950 sticky top-0 z-[1000] w-full">
     <div class="flex flex-col sm:flex-row items-center">
-      <div class="flex items-center justify-between px-4 py-4 sm:py-0">
+      <div class="flex items-center justify-between px-4 py-4 sm:py-0 w-full sm:w-0">
         <div>
           <router-link
             to="/"
@@ -11,7 +11,7 @@
         </div>
         <div>
           <!-- hamburger menu -->
-          <button class="focus:outline-none text-white hidden">
+          <button class="focus:outline-none text-white text-center items-center flex justify-center sm:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

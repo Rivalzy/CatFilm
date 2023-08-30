@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <headerCon />
     <div class="bg-slate-950 min-h-screen flex justify-center items-center">
       <h1 class="text-white font-semibold text-2xl">Not Found</h1>

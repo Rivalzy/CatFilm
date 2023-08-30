@@ -60,7 +60,7 @@
         <form action="" class="relative w-max py-3 px-4 sm:py-5 hidden sm:block">
           <input
             id="search"
-            type="search"
+            type="text"
             name="search"
             class="relative z-10 bg-transparent w-12 h-12 rounded-full border-2 cursor-pointer outline-none pl-12 pr-4 focus:w-full focus:border-orange-300 focus:shadow-orange-300 focus:shadow-md focus:cursor-text focus:pl-16 focus:pr:4 border-orange-600 text-white"
             placeholder="Spiderman"

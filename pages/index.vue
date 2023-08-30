@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <headerCon />
     <div class="bg-slate-950 min-h-screen">
       <caroSel class="h-[100vh]" />

@@ -1,10 +1,21 @@
 <template>
-  <div>
+  <div class="flex justify-center pt-10 ">
     <slot :current-slide="currentSlide" />
+
+    <!-- Iamge -->
+    <sliderCon v-for="(slide, index) in carouselSlides" :key="index">
+      <div v-show="currentSlide === index + 1" class="flex justify-center">
+        <img
+          :src="require(`@/assets/img/${slide}.jpg`)"
+          alt="gambar"
+          class="h-[400px] w-[500px] sm:h-[400px] sm:w-[1000px] brightness-[.8] rounded-md object-cover absolute border-2 border-solid border-white"
+        />
+      </div>
+    </sliderCon>
 
     <!-- Navigasi -->
     <div
-      class="pt-0 pb-[16px] h-full w-full absolute flex justify-center items-center"
+      class="pt-0 pb-[16px] h-[400px] w-[500px] sm:h-[400px] sm:w-[1000px] absolute flex justify-center items-center"
     >
       <div class="flex flex-1 px-3">
         <i
@@ -47,34 +58,38 @@
             />
           </svg>
         </i>
+        <div
+          class="absolute bottom-5 w-full flex gap-4 justify-center items-center"
+        >
+          <span
+            v-for="index in getSlideCount"
+            :key="index"
+            :class="{ active: index + 1 === currentSlide }"
+            class="cursor-pointer w-3 h-3 rounded-[50%] bg-white"
+            @click="goToSlide(index)"
+          >
+          </span>
+        </div>
       </div>
     </div>
 
     <!-- radio -->
-    <div
-      class="absolute bottom-6 w-full flex gap-4 justify-center items-center"
-    >
-      <span
-        v-for="(slide, index) in getSlideCount"
-        :key="index"
-        :class="{ active: index + 1 === currentSlide }"
-        class="cursor-pointer w-3 h-3 rounded-[50%] bg-white"
-        @click="goToSlide(index)"
-      >
-      </span>
-    </div>
   </div>
 </template>
 
 <script>
 import { ref, onMounted } from 'vue'
+import sliderCon from '@/components/sliderCon.vue'
 
 export default {
+  components: {
+    sliderCon,
+  },
+
   setup() {
     const currentSlide = ref(4)
     const getSlideCount = ref(null)
     const autoPlay = ref(true)
-    const timeDuration = ref(5000)
 
     // Next Slide
     const nextSlide = () => {
@@ -102,18 +117,27 @@ export default {
     const auto = () => {
       setInterval(() => {
         prevSlide()
-      }, timeDuration.value)
+      }, 3000)
     }
 
     if (autoPlay.value) {
       auto()
     }
 
+    const carouselSlides = ['spider', 'gof', 'spider', 'gof']
+
     onMounted(() => {
       getSlideCount.value = document.querySelectorAll('.slide').length
     })
 
-    return { currentSlide, nextSlide, prevSlide, getSlideCount, goToSlide }
+    return {
+      currentSlide,
+      nextSlide,
+      prevSlide,
+      getSlideCount,
+      goToSlide,
+      carouselSlides,
+    }
   },
 }
 </script>

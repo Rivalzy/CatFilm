@@ -1,7 +1,7 @@
 <template>
   <div>
     <headerCon />
-    <div class="bg-slate-950 min-h-screen">
+    <div class="bg-slate-950 h-screen">
       <caroSel class="h-[100vh]" />
       <footerCon />
     </div>

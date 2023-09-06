@@ -21,4 +21,4 @@
 .slide-leave-from {
   opacity: 1;
 }
-</style> 
+</style>

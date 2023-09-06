@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center pt-10 ">
+  <div class="flex justify-center pt-10">
     <slot :current-slide="currentSlide" />
 
     <!-- Iamge -->
@@ -8,18 +8,18 @@
         <img
           :src="require(`@/assets/img/${slide}.jpg`)"
           alt="gambar"
-          class="h-[400px] w-[500px] sm:h-[400px] sm:w-[1000px] brightness-[.8] rounded-md object-cover absolute border-2 border-solid border-white"
+          class="h-[200px] w-[300px] sm:h-[400px] sm:w-[1000px] px:0 brightness-[.8] rounded-md object-cover absolute border-2 border-solid border-white"
         />
       </div>
     </sliderCon>
 
     <!-- Navigasi -->
     <div
-      class="pt-0 pb-[16px] h-[400px] w-[500px] sm:h-[400px] sm:w-[1000px] absolute flex justify-center items-center"
+      class="pt-0 pb-[16px] h-[200px] w-[300px] sm:h-[400px] sm:w-[650px] md:w-[950px] absolute flex justify-center items-center"
     >
       <div class="flex flex-1 px-3">
         <i
-          class="bg-orange-600 text-white cursor-pointer flex items-center justify-center rounded-[50%] w-10 h-10"
+          class="bg-orange-600 text-white cursor-pointer flex items-center justify-center rounded-[50%] sm:w-10 sm:h-10 w-8 h-8"
           @click="prevSlide"
         >
           <svg
@@ -28,7 +28,7 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-8 h-8 p-1"
+            class="sm:w-8 sm:h-8 w-6 h-6 p-1"
           >
             <path
               stroke-linecap="round"
@@ -40,7 +40,7 @@
       </div>
       <div class="flex flex-1 justify-end px-3">
         <i
-          class="bg-orange-600 text-white cursor-pointer flex items-center justify-center rounded-[50%] w-10 h-10"
+          class="bg-orange-600 text-white cursor-pointer flex items-center justify-center rounded-[50%] sm:w-10 sm:h-10 w-8 h-8"
           @click="nextSlide"
         >
           <svg
@@ -49,7 +49,7 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-8 h-8 p-1"
+            class="sm:w-8 sm:h-8 w-6 h-6 p-1"
           >
             <path
               stroke-linecap="round"
@@ -58,22 +58,21 @@
             />
           </svg>
         </i>
-        <div
-          class="absolute bottom-5 w-full flex gap-4 justify-center items-center"
+      </div>
+      <!-- Radio -->
+      <div
+        class="absolute bottom-5 w-full flex gap-4 justify-center items-center"
+      >
+        <span
+          v-for="index in getSlideCount"
+          :key="index"
+          :class="{ active: index + 1 === currentSlide }"
+          class="cursor-pointer sm:w-3 sm:h-3 w-[8px] h-[8px] rounded-[50%] bg-white"
+          @click="goToSlide(index)"
         >
-          <span
-            v-for="index in getSlideCount"
-            :key="index"
-            :class="{ active: index + 1 === currentSlide }"
-            class="cursor-pointer w-3 h-3 rounded-[50%] bg-white"
-            @click="goToSlide(index)"
-          >
-          </span>
-        </div>
+        </span>
       </div>
     </div>
-
-    <!-- radio -->
   </div>
 </template>
 

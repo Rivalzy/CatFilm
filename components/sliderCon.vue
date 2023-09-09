@@ -1,24 +1,24 @@
 <template>
   <div class="slide">
-    <transition name="slide">
+    <transition name="slide-fade">
       <slot />
     </transition>
   </div>
 </template>
 
 <style>
-.slide-enter-active,
-.slide-leave-active {
+.slide-fade-enter-active,
+.slide-fade-leave-active {
   transition: opacity 0.7s ease-in-out;
 }
 
-.slide-enter-from,
-.slide-leave-to {
+.slide-fade-enter-from,
+.slide-fade-leave-to {
   opacity: 0;
 }
 
-.slide-enter-to,
-.slide-leave-from {
+.slide-fade-enter-to,
+.slide-fade-leave-from {
   opacity: 1;
 }
 </style>

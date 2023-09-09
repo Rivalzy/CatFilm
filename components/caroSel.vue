@@ -59,6 +59,7 @@
           </svg>
         </i>
       </div>
+      
       <!-- Radio -->
       <div
         class="absolute bottom-5 w-full flex gap-4 justify-center items-center"
@@ -66,7 +67,7 @@
         <span
           v-for="index in getSlideCount"
           :key="index"
-          :class="{ active: index + 1 === currentSlide }"
+          :class="{ active: index + 0 === currentSlide }"
           class="cursor-pointer sm:w-3 sm:h-3 w-[8px] h-[8px] rounded-[50%] bg-white"
           @click="goToSlide(index)"
         >
@@ -86,7 +87,6 @@ export default {
   },
 
   setup() {
-    const currentSlide = ref(4)
     const getSlideCount = ref(null)
     const autoPlay = ref(true)
 
@@ -118,12 +118,13 @@ export default {
         prevSlide()
       }, 3000)
     }
-
+    
     if (autoPlay.value) {
       auto()
     }
-
+    
     const carouselSlides = ['spider', 'gof', 'spider', 'gof']
+    const currentSlide = ref(carouselSlides.length - 0)
 
     onMounted(() => {
       getSlideCount.value = document.querySelectorAll('.slide').length

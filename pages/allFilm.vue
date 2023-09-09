@@ -33,6 +33,10 @@
       <div class="flex gap-8 px-28">
         <cardItem v-for="(card, i) in resultQuery" :key="i" :card="card" />
       </div>
+      <div v-if="searchQuery && resultQuery.length === 0" class="text-center text-[18px] mt-10 text-white">
+        <h1>Not Found</h1>
+      </div>
+
     </div>
     <footerCon />
   </div>

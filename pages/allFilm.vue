@@ -15,12 +15,12 @@
               v-model="searchQuery"
               type="text"
               name="search"
-              class="bg-transparent w-full h-12 rounded-l-full border-2 cursor-pointer outline-none pl-5 pr-11 focus:border-orange-600 focus:shadow-orange-600 focus:shadow-md focus:cursor-text border-orange-600 text-white"
+              class="bg-transparent w-full h-12 rounded-l-full border-2 cursor-pointer outline-none pl-5 pr-11 focus:border-orange-600 focus:shadow-orange-600 focus:shadow-md focus:cursor-text border-orange-600 text-black bg-white"
               placeholder="Search"
             />
             <select
               v-model="selectedFilter"
-              class="absolute top-0 right-5 w-2  h-full bg-transparent text-black cursor-pointer outline-none pl-4 pr-2 focus:border-orange-600"
+              class="absolute top-0 right-5 w-2 h-full bg-transparent text-black cursor-pointer outline-none pl-4 pr-2"
             >
               <option value="All">All</option>
               <option value="Movies">Movies</option>
@@ -38,15 +38,18 @@
       </div>
 
     </div>
+    <scrollTop />
     <footerCon />
   </div>
 </template>
 
 <script>
 import cardItem from '~/components/Card/cardItem.vue'
+import scrollTop from '~/components/scrollTop.vue'
 export default {
   components: {
     cardItem,
+    scrollTop,
   },
 
   data() {
@@ -56,7 +59,7 @@ export default {
 
       cards: [
         {
-          route: '#',
+          route: '/single',
           catalog: 'Movies',
           imgSrc:
             'https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/02/guardians-of-the-galaxy-vol-3-movie-poster.jpg',
@@ -65,7 +68,7 @@ export default {
           genre: 'Action',
         },
         {
-          route: '#',
+          route: '/single',
           catalog: 'Animasi',
           imgSrc:
             'https://en-images.kinorium.com/movie/1080/2005077.jpg?1671813806',

@@ -1,6 +1,12 @@
 <template>
   <div
-    class="bg-slate-950 sticky top-0 z-[1000] w-full" :class="{ 'border-b-[1px] border-solid border-white': borderVisible }"
+    class="bg-slate-950 sticky top-0 z-[1000] w-full"
+    :class="{
+      'border-b-[1px] border-solid border-white': borderVisible,
+      'bg-transparent': bgVisible,
+      'backdrop-blur-sm': bgBlur,
+      'font-semibold': textSemiBold,
+    }"
   >
     <div class="flex flex-col sm:flex-row">
       <div
@@ -71,9 +77,28 @@
           >
         </div>
 
-        <!-- search bar -->
         <div class="flex flex-col sm:flex-row">
-          
+          <div
+            class="group flex flex-col sm:flex-row items-center text-center mx-4 text-white gap-1 p-2 bg-orange-500 rounded-lg cursor-pointer hover:bg-orange-300 hover:shadow-md hover:shadow-orange-200 duration-150 ease-in-out"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 group-hover:text-black"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+              />
+            </svg>
+            <router-link to="./login" class="group-hover:text-black">
+              <h1>Admin</h1>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -86,6 +111,9 @@ export default {
     return {
       isMenuOpen: false,
       borderVisible: false,
+      bgVisible: false,
+      bgBlur: false,
+      textSemiBold: false,
       // Menu
       menu: [
         {
@@ -109,11 +137,17 @@ export default {
       const scrollY = window.scrollY
       if (scrollY >= 50) {
         this.borderVisible = true
+        this.bgVisible = true
+        this.bgBlur = true
+        this.textSemiBold = true
       } else {
         this.borderVisible = false
+        this.bgVisible = false
+        this.bgBlur = false
+        this.textSemiBold = false
       }
     },
-    
+
     toggle() {
       const Menu = document.getElementById('menu')
       if (Menu.style.display === 'none' || Menu.style.display === '') {
@@ -122,6 +156,8 @@ export default {
         Menu.style.display = 'none'
       }
       this.isMenuOpen = !this.isMenuOpen
+
+      this.hideLoading()
     },
   },
 }

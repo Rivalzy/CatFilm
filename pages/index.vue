@@ -2,7 +2,7 @@
   <div>
     <headerCon />
     <div class="bg-slate-950 h-screen">
-      <caroSel class="h-[75%]" />
+      <caroSel class="h-[90vh]" />
       <div class="bg-slate-950">
         <div class="flex justify-center text-center items-center">
           <div
@@ -21,7 +21,11 @@
             <div
               class="group w-40 h-72 bg-white cursor-pointer hover:bg-orange-500 hover:shadow-lg hover:shadow-white hover:scale-[1.10] transition-all duration-[250] ease-in-out"
             >
-              <img :src="item.imageSrc" :alt="item.alt" class="w-full h-40 object-cover" />
+              <img
+                :src="item.imageSrc"
+                :alt="item.alt"
+                class="w-full h-40 object-cover"
+              />
               <div
                 class="text-center items-center px-2 text-slate-500 group-hover:text-white"
               >
@@ -41,6 +45,7 @@
           </router-link>
         </div>
       </div>
+      <scrollTop />
       <footerCon />
     </div>
   </div>
@@ -50,31 +55,36 @@
 import headerCon from '@/components/headerCon.vue'
 import caroSel from '@/components/caroSel.vue'
 import footerCon from '@/components/footerCon.vue'
+import scrollTop from '~/components/scrollTop.vue'
 
 export default {
   components: {
     headerCon,
     caroSel,
     footerCon,
+    scrollTop,
   },
+
   data() {
     return {
       items: [
         {
           route: '#',
-          imageSrc: 'https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/02/guardians-of-the-galaxy-vol-3-movie-poster.jpg',
+          imageSrc:
+            'https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/02/guardians-of-the-galaxy-vol-3-movie-poster.jpg',
           category: 'Movies',
-          title: 'Guardian Of Galaxy',
+          title: 'Guardian Of Galaxy Vol 3',
           genre: 'Action',
-          alt: 'gof'
+          alt: 'gof',
         },
         {
           route: '#',
-          imageSrc: 'https://en-images.kinorium.com/movie/1080/2005077.jpg?1671813806',
+          imageSrc:
+            'https://en-images.kinorium.com/movie/1080/2005077.jpg?1671813806',
           category: 'Movies',
           title: 'Spiderman Across the Spider Verse',
           genre: 'Action',
-          alt: 'spider'
+          alt: 'spider',
         },
       ],
     }
